@@ -629,32 +629,32 @@
             font-weight: 500;
         }
 
-        /* ─── Side note ─── */
-        .side-note {
+        /* ─── Spacing warning ─── */
+        .spacing-warning {
             display: flex;
             align-items: flex-start;
-            gap: 8px;
-            border: 1px solid rgba(255, 180, 0, 0.35);
-            border-left: 3px solid rgba(255, 180, 0, 0.6);
+            gap: 10px;
+            border: 1px solid rgba(255, 180, 0, 0.4);
+            border-left: 3px solid rgba(255, 180, 0, 0.7);
             border-radius: 5px;
-            padding: 10px 12px;
-            font-size: 0.75rem;
-            color: rgba(255, 190, 30, 0.7);
+            padding: 11px 13px;
+            font-size: 0.76rem;
+            color: rgba(255, 190, 30, 0.75);
             line-height: 1.6;
-            background: rgba(255, 160, 0, 0.04);
-            margin-top: auto;
+            background: rgba(255, 160, 0, 0.05);
+            box-shadow: 0 0 12px rgba(255, 160, 0, 0.05);
         }
 
-        .side-note strong {
-            color: rgba(255, 200, 40, 0.95);
+        .spacing-warning strong {
+            color: rgba(255, 210, 50, 1);
             font-weight: 700;
         }
 
-        .side-note-icon {
-            font-size: 0.6rem;
-            margin-top: 3px;
-            opacity: 0.7;
+        .spacing-warning-icon {
+            font-size: 0.85rem;
             flex-shrink: 0;
+            margin-top: 1px;
+            opacity: 0.85;
         }
 
         /* ─── Footnote ─── */
@@ -751,9 +751,11 @@
             <p class="hint">Select a defect type above to enter measurements.</p>
         </div>
 
-        <div class="side-note">
-            <span class="side-note-icon">★</span>
-            <span>Any discontinuity spacing under <strong>0.005"</strong> is considered irrelevant for spacing evaluation.</span>
+        <hr class="divider">
+
+        <div class="spacing-warning">
+            <span class="spacing-warning-icon">⚠</span>
+            <span>Any discontinuity under <strong>0.005"</strong> is considered irrelevant for spacing evaluation.</span>
         </div>
 
     </div>
