@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS D17.1 — Table 7.1 Compliance Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Share+Tech+Mono&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:2px">
+            <span class="header-badge">AWS D17.1</span>
+            <h1>Weld Acceptance Criteria — Table 7.1</h1>
+        </div>
+        <p>Discontinuity compliance checker &nbsp;·&nbsp; Values in inches (in)</p>
+    </div>
+</header>
+
+<div class="stamp-bar">
+    <div class="stamp">
+        <span class="stamp-icon">⚠</span>
+        <span class="stamp-text">FOR REFERENCE ONLY — NOT A SUBSTITUTE FOR OFFICIAL AWS D17.1 INSPECTION OR ENGINEERING JUDGMENT</span>
+    </div>
+</div>
+
+<div class="layout">
+<div class="inner">
+
+    <!-- ─── Input Panel ─── -->
+    <div class="panel">
+
+        <div class="field-group">
+            <div class="eyebrow">Material Thickness</div>
+            <div>
+                <label for="thickness">T — Base material thickness (in)</label>
+                <input type="number" id="thickness" min="0.0001" step="0.0001"
+                       placeholder="e.g. 0.250" oninput="evaluate()">
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <div class="field-group">
+            <div class="eyebrow">Weld Class</div>
+            <div class="class-grid">
+                <button class="cls-btn" data-class="A" onclick="setClass('A')">
+                    Class A<br><span class="cls-sub">Highest</span>
+                </button>
+                <button class="cls-btn" data-class="B" onclick="setClass('B')">
+                    Class B<br><span class="cls-sub">Medium</span>
+                </button>
+                <button class="cls-btn" data-class="C" onclick="setClass('C')">
+                    Class C<br><span class="cls-sub">General</span>
+                </button>
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <div class="field-group">
+            <div class="eyebrow">Defect Type</div>
+            <div class="select-wrapper">
+                <select id="defectType" onchange="updateFields()">
+                    <option value="">— Select discontinuity —</option>
+                    <optgroup label="Automatic Rejection (all classes)">
+                        <option value="cracks">Cracks</option>
+                        <option value="overlap">Overlap (Cold Lap)</option>
+                        <option value="incomplete-fusion">Incomplete Fusion</option>
+                        <option value="incomplete-penetration">Incomplete Penetration</option>
+                    </optgroup>
+                    <optgroup label="Porosity">
+                        <option value="porosity-surface">Porosity — Surface</option>
+                        <option value="porosity-subsurface">Porosity — Subsurface</option>
+                    </optgroup>
+                    <optgroup label="Discontinuities">
+                        <option value="inclusions">Inclusions</option>
+                        <option value="undercut">Undercut</option>
+                        <option value="underfill">Face or Root Underfill (Groove Welds)</option>
+                        <option value="craters">Craters</option>
+                        <option value="arc-strikes">Arc Strikes / Gouge Marks</option>
+                    </optgroup>
+                </select>
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <div id="dynamicFields">
+            <p class="hint">Select a defect type above to enter measurements.</p>
+        </div>
+
+    </div>
+
+    <!-- ─── Results Panel ─── -->
+    <div class="results" id="resultsPanel">
+        <div class="empty-state">
+            <svg width="52" height="52" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"
+                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0
+                       3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946
+                       3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138
+                       3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806
+                       3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438
+                       3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+            </svg>
+            <p>Enter thickness, select a class and defect type,<br>then input measurements to check compliance.</p>
+        </div>
+    </div>
+
+</div>
+</div>
+
+<script src="calculator.js"></script>
+</body>
+</html>
